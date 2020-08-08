@@ -8,7 +8,6 @@ import { Emoji } from 'emoji-mart';
 import { registerOnMessageCallback, send } from './websocket';
 import translateMessage from './translate-text';
 
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
