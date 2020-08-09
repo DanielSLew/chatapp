@@ -1,12 +1,12 @@
-{
-  "root": "server/index.js",
-  "routes": {
-    "/**": "index.html"
-  },
-  "proxies": {
-    "/chat/": {
-      "origin": "${WS_URL}"
-    }
+// {
+//   "root": "server/index.js",
+//   "routes": {
+//     "/**": "index.html"
+//   },
+//   "proxies": {
+//     "/chat/": {
+//       "origin": "${WS_URL}"
+//     }
 
-  }
-}
+//   }
+// }
