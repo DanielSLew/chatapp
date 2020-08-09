@@ -1,5 +1,5 @@
 {
-  "root": "build/",
+  "root": "server/index.js",
   "routes": {
     "/**": "index.html"
   },
@@ -7,5 +7,6 @@
     "/chat/": {
       "origin": "${WS_URL}"
     }
+
   }
 }
