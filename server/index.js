@@ -1,9 +1,8 @@
 const express = require('express');
 const expressWs = require('express-ws');
 const uuidv4 = require('uuid/v4');
-const config = require('../src/config');
 
-const PORT = config.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 const app = express();
 
 expressWs(app);
