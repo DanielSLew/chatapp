@@ -15,7 +15,7 @@ class App extends Component {
   state = {
     messages: [],
     username: null,
-    language: 'en',
+    language: 'en', // Change to 'en' to ignore translation features
     webSiteText: {
       enterName: { text: 'Enter your username here' },
       enterMsg: { text: 'Type your message here' },
