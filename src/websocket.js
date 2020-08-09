@@ -10,7 +10,7 @@ let token;
 
 export const startWebsocketConnection = (id) => {
   token = id ? id : uuidv4();
-  let wsEndpoint = `ws://${host}/chat/${token}`;
+  let wsEndpoint = `ws://${host}:${PORT}/chat/${token}`;
   if (config.NODE_ENV === 'production') wsEndpoint = wsEndpoint.replace('s', 'ss');
 
   const ws = new window.WebSocket(wsEndpoint) || {};
