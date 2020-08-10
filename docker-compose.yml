@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
 
-  world-chat-app:
+  web:
     container_name: world-chat-app
     build:
       context: .
