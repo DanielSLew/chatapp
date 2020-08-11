@@ -2,7 +2,6 @@ const express = require('express');
 const expressWs = require('express-ws');
 const uuidv4 = require('uuid/v4');
 
-const PORT = 8080;
 const app = express();
 
 expressWs(app);
@@ -39,4 +38,4 @@ app.ws('/chat/:token', wsHandler)
 
 app.use(express.static('build'));
 
-app.listen(PORT);
+app.listen(8080);
