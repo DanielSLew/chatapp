@@ -1,5 +1,5 @@
 const uuidv4 = require('uuid/v4');
-const config = require('./config').default;
+const config = require('./config');
 const querystring = require('querystring');
 
 var key_var = 'REACT_APP_TRANSLATOR_TEXT_SUBSCRIPTION_KEY';
