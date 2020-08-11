@@ -4,6 +4,7 @@ const uuidv4 = require('uuid/v4');
 
 const app = express();
 
+const PORT = process.env.PORT || 8080
 expressWs(app);
 
 const connections = {};
@@ -38,4 +39,4 @@ app.ws('/chat/:token', wsHandler)
 
 app.use(express.static('build'));
 
-app.listen(8080);
+app.listen(PORT);
