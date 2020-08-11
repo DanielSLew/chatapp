@@ -1,8 +1,7 @@
 const uuidv4 = require('uuid/v4');
-const config = require('./config');
+const config = require('./config').default;
 const querystring = require('querystring');
-console.log(config);
-console.log(process.env);
+
 var key_var = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY';
 if (!config[key_var]) {
     throw new Error('Please set/export the following environment variable: ' + key_var);

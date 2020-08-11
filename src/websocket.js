@@ -1,5 +1,5 @@
 const uuidv4 = require('uuid/v4');
-const config = require('./config');
+const config = require('./config')default;
 const host = config.NODE_ENV === 'production' ? window.location.host : 'localhost';
 const PORT = config.PORT || 8080
 
