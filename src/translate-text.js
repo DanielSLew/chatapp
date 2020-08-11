@@ -2,12 +2,12 @@ const uuidv4 = require('uuid/v4');
 const config = require('./config');
 const querystring = require('querystring');
 
-var key_var = 'REACT_APP_TRANSLATOR_TEXT_SUBSCRIPTION_KEY';
+var key_var = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY';
 if (!config[key_var]) {
     throw new Error('Please set/export the following environment variable: ' + key_var);
 }
 var subscriptionKey = config[key_var];
-var endpoint_var = 'REACT_APP_TRANSLATOR_TEXT_ENDPOINT';
+var endpoint_var = 'TRANSLATOR_TEXT_ENDPOINT';
 if (!config[endpoint_var]) {
     throw new Error('Please set/export the following environment variable: ' + endpoint_var);
 }

@@ -1,5 +1,5 @@
 const uuidv4 = require('uuid/v4');
-const config = require('./config').default;
+const config = require('./config');
 const host = config.NODE_ENV === 'production' ? window.location.host : 'localhost';
 const PORT = config.PORT || 8080
 
@@ -10,7 +10,8 @@ let token;
 
 export const startWebsocketConnection = (id) => {
   token = id ? id : uuidv4();
-  let wsEndpoint = `ws://${host}:${PORT}/chat/${token}`;
+  const socketProtocol = (window.location.protocol === 'https:' ? 'wss:' : 'ws:');
+  const wsEndpoint = `${socketProtocol}//${host}:${PORT}/chat/${token}`;
 
   const ws = new window.WebSocket(wsEndpoint) || {};
 
