@@ -1,8 +1,6 @@
 const uuidv4 = require('uuid/v4');
 const config = require('./config').default;
 const querystring = require('querystring');
-console.log(process.env);
-console.log(config);
 
 var key_var = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY';
 // if (!config[key_var]) {
