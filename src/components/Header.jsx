@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import CheckIcon from '../check-icon.svg';
+import * as clipboard from "clipboard-polyfill/text";
 
 function Header({ room, placeholder }) {
   const [copySuccess, setCopySuccess] = useState(false);
@@ -9,37 +10,39 @@ function Header({ room, placeholder }) {
 
   let displayCopyMessage;
 
-  function writeText(str) {
-    clearTimeout(displayCopyMessage);
-    return new Promise(function(resolve, reject) {
-      var success = false;
-      function listener(e) {
-        e.clipboardData.setData("text/plain", str);
-        e.preventDefault();
-        success = true;
-      }
-      document.addEventListener("copy", listener);
-      document.execCommand("copy");
-      document.removeEventListener("copy", listener);
-      success ? resolve(): reject();
-      setCopySuccess(true);
-      displayCopyMessage = setTimeout(() => setCopySuccess(false), 2000);
-    });
-  };
-
-  // const copyInviteToClipboard = () => {
+  // function writeText(str) {
   //   clearTimeout(displayCopyMessage);
-  //   navigator.clipboard.writeText(inviteMessage);
   //   setCopySuccess(true);
   //   displayCopyMessage = setTimeout(() => setCopySuccess(false), 2000);
-  // }
+    
+  //   return new Promise(function(resolve, reject) {
+  //     var success = false;
+  //     function listener(e) {
+  //       e.clipboardData.setData("text/plain", str);
+  //       e.preventDefault();
+  //       success = true;
+  //     }
+  //     document.addEventListener("copy", listener);
+  //     document.execCommand("copy");
+  //     document.removeEventListener("copy", listener);
+  //     success ? resolve(): reject();
+  //   });
+  // };
+
+  const copyInviteToClipboard = async () => {
+    clearTimeout(displayCopyMessage);
+
+    await clipboard.writeText(inviteMessage);
+    setCopySuccess(true);
+    displayCopyMessage = setTimeout(() => setCopySuccess(false), 2000);
+  }
 
   return(
     <div>
       <p>
         <Button
           className="mx-auto"
-          onClick={writeText(inviteMessage)}
+          onClick={copyInviteToClipboard}
           style={{ marginRight: '20px' }}
           variant="outline-info"
         >{placeholder}</Button>
