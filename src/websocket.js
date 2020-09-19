@@ -11,7 +11,7 @@ let token;
 export const startWebsocketConnection = (id) => {
   token = id ? id : uuidv4();
   const socketProtocol = (window.location.protocol === 'https:' ? 'wss:' : 'ws:');
-  const wsEndpoint = `${socketProtocol}//${host}:${PORT}/chat/${token}`;
+  const wsEndpoint = `${socketProtocol}//${host}/chat/${token}`;
 
   const ws = new window.WebSocket(wsEndpoint) || {};
 
