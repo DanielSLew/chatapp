@@ -1,13 +1,19 @@
 const express = require('express');
 const expressWs = require('express-ws');
+const bodyParser = require('body-parser');
 const uuidv4 = require('uuid/v4');
-const { MongoClient } = require('mongodb')
+
+const { MongoClient } = require('mongodb');
+
 const app = express();
 
 const url = 'mongodb://127.0.0.1:27017';
 const PORT = process.env.PORT || 8080
 
 const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 expressWs(app);
 
 const connections = {};
@@ -58,18 +64,19 @@ const gitWebhookHandler = async (req, res) => {
     await client.connect();
     const db = client.db('worldchat');
     const collection = db.collection('commits');
-    await client.db('commits').insertOne({ res });
+    await collection.insertOne(req.body);
   } catch (e) {
     console.error(e);
   } finally {
     await client.close();
+    res.sendStatus(200);
   }
 }
 
 
-app.ws('/chat/:token', wsHandler)
+app.ws('/chat/:token', wsHandler);
 
-app.post('/git-webhook', gitWebhookHandler)
+app.post('/git-webhook', gitWebhookHandler);
 app.use(express.static('build'));
 
 app.listen(PORT);
